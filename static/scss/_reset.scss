@@ -1,0 +1,48 @@
+html, body, p {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited, a:link {
+    text-decoration: none;
+    color: #660033;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+
+input {
+    border: 0px solid black;
+    
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    opacity: 1 !important;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    opacity:  1;
+    -webkit-opacity:1;
+    -khtml-opacity: 1;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}

@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'confiramtion.css' %}">
+    <link rel="stylesheet" href="{% static 'cart.css' %}">
+</head>
+<body>
+    <!-- include parts -->
+    {% include 'header.html' %}
+    {% include 'nav.html' %}
+    {% include 'footer.html' %}
+    {% include 'confiramtion_content.html' %}
+    
+    <!-- header -->
+    {% block header %}
+    {% endblock %}
+
+    <!-- nav -->
+    {% block nav %}
+    {% endblock %}
+
+    <!-- content -->
+    {% block confiramtion_content %}
+    {% endblock %}
+
+    <!-- footer -->
+    {% block footer %}    
+    {% endblock footer %}
+
+    
+    <script src="{% static 'headercart.js' %}"></script>
+    <script src="{% static 'confirmation.js' %}"></script>
+</body>
+</html>

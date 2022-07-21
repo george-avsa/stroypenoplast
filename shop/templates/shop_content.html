@@ -1,0 +1,68 @@
+{% block content %}
+{% load static %}
+<div class="content">
+
+    <div class="shop_title">
+        <h1>{{ product_type }}</h1>
+        <img src="{% static 'images/shop/info.svg' %}" alt="">
+    </div>
+
+    {% if menu %}
+    <div class="shop_filter">
+        <!-- <a href="/shop/penopolistirol"><div class="shop_filter-item {% if page == 'all' %}item-active{% endif %}">Все марки</div></a> -->
+        {% for item in menu %}
+            <a href="{{item.link}}"><div class="shop_filter-item {% if item.active %}item-active{% endif %}">{{ item.name }}</div></a>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="shop_body">
+        {% for product in kek %}
+
+        <div class="shop_body-item">
+            <div class="shop_body-item_img" style="background-image: url({% static product.image %})"></div>
+            <div class="shop_body-item_content">
+                <h1 class="shop_body-item_name">{{product.product_name}}</h1>
+                <div class="shop_body-item_price-block">
+                    <h1 class="shop_body-item_price-title">Цена</h1>
+                    <h1 class="shop_body-item_price">{{ product.price }} руб.</h1>
+                </div>
+                <div class="shop_body-item_btns">
+                    <div class="shop_body-item_amount">
+                        <div class="item_minus" id="shop_item-minus{{forloop.counter}}"></div>
+                        <img src="{% static 'images/shop/minus.svg' %}">
+                        <p class="shop_body-item_amount-amount" id="shop_item-count{{forloop.counter}}">1</p>
+                        <img src="{% static 'images/shop/plus.svg' %}" alt="">
+                        <div class="item_plus" id="shop_item-plus{{forloop.counter}}" ></div>
+                    </div>
+                    <div class="shop_body-item_tocart"  id="shop_item-btn{{forloop.counter}}" data-product="{{ product.id }}"> 
+                        в корзину
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    {% if product_type == 'ПЕНОПОЛИСТИРОЛ' %}
+        {% include 'products/penopolistirol.html' %}
+        {% block penopolistirol %}
+        {% endblock %}
+    {% elif product_type == 'НЕСЪЕМНАЯ ОПАЛУБКА' %}
+
+    {% elif product_type == 'ГРАНУЛЫ ПЕНОПОЛИСТИРОЛА' %}
+
+    {% elif product_type == 'ПОЛИТЕРМ' %}
+
+    {% elif product_type == 'ПОДЛОЖКА ДЛЯ ПОЛА' %}
+
+    {%endif%}
+
+</div>
+<!-- <div class="shop_push">
+    <div class="shop_push-text">
+        Товар добавлен в корзину
+    </div>
+    <div class="shop_push-proccess"></div>
+</div> -->
+{% endblock %}

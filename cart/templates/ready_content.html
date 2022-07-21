@@ -1,0 +1,25 @@
+{% block content %}
+{% load static %}
+<div class="content">
+    <div class="content_navigator">
+        <div class="content_navigator-inner">
+            <p class="nav_item nav_margin-cart">КОРЗИНА</p>
+            <img src="{% static 'images/header/arrow_down.svg' %}" alt="">
+            <p class="nav_item nav_margin-cart">ПОДТВЕРЖДЕНИЕ</p>
+            <img src="{% static 'images/header/arrow_down.svg' %}" alt="">
+            <p class="nav_item nav_margin-cart nav_margin-active">ЗАВЕРШЕНИЕ</p>
+        </div>
+    </div>
+    <div class="content_message-body">
+        <div class="content_message">
+            <h1 class="content_message-title">ВАШ ЗАКАЗ СОЗДАН!</h1>
+            <p class="content_message-text">
+                Скоро с Вами свяжется менеджер для подтверждения заказа
+            </p>
+        </div>
+    </div>
+    
+</div>
+
+{% csrf_token %}
+{% endblock %}

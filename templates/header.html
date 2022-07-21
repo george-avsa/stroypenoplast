@@ -1,0 +1,25 @@
+{% block header %}
+{% load static %}
+<header>
+    <div class="head_content">
+        <img src="{% static 'images/header/burger.svg' %}" alt="" class="head_burger">
+        <a href="/"><img src="{% static 'images/header/logo.svg' %}" alt="" class="head_logo"></a>
+        <div class="head_left">
+            <div class="head_number">
+                <a href="tel:+79688258282" style="color: #fff;"><p class="head_phone">+7(968)-8258282</p></a>
+                <p class="head_working_hours">08.00-21.00</p>
+            </div>
+            <a href="/#content_form"><div class="order_call">ЗАКАЗАТЬ ЗВОНОК</div></a>
+        </div>
+        {% if page != 'cart' %}
+        <a href="/cart" class="mobile_link">
+            <div class="head_cart" {% if page == 'cart' %}style="opacity: 0"{% endif%}>
+                <p class="nav_items_cart">{% if cart_empty %}0{% elif total_amount > 100 %}99{% else %}{{total_amount}}{%endif%}</p>
+            </div>
+        </a>
+        {% else %}
+            <div class="mobile_link"></div>
+        {% endif %}
+    </div>
+</header>
+{% endblock %}

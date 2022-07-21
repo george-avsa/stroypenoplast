@@ -1,0 +1,40 @@
+{% block footer %}
+{% load static %}
+<footer>
+    <div class="footer_content">
+        <div class="footer_left">
+            <div class="footer_contacts">
+                <img src="{% static 'images/header/logo.svg' %}" alt="" class="footer_logo">
+                <a href="tel:+79688258282" style="color: #fff; opacity: .8; text-decoration: underline;"><p class="footer_phone">+7(968)-8258282</p></a>
+                <a href="mailto:info@stroy-penoplast.ru" style="color: #fff; opacity: .8; text-decoration: underline;"><p class="footer_item">info@stroy-penoplast.ru</p></a>
+                <p class="footer_item">Ежедневно с 08:00 до 21:00</p>
+                <p class="footer_item-small">Политика конфедициальности</p>
+            </div>
+            <div class="footer_menu mobile-hide">
+                <p class="footer_title">Продукция</p>
+                <p class="footer_item">Пенополистерол</p>
+                <p class="footer_item">Несъемная опалубка</p>
+                <p class="footer_item">Гранулы пенополистирола</p>
+                <p class="footer_item">Политерм</p>
+                <p class="footer_item">Сэндвич-панели</p>
+                <p class="footer_item">Фасадный декор</p>
+                <p class="footer_item">Подложка для теплого пола</p>
+                <p class="footer_item">Теплоизоляция для труб</p>
+            </div>
+            <div class="footer_menu mobile-portait-hide">
+                <p class="footer_title">Хотите задать вопрос?</p>
+                <p class="footer_text" style="line-height: 169.18%;">С нами можно связаться по телефону, написать на почту или оставить заявку, выбрать время и способ обратной связи!</p>
+            </div>
+        </div>
+        <!-- <div class="footer_right">
+            <div class="footer_social">
+                <div class="footer_social-vk" style="margin-left: 0;"><img src="{% static 'images/footer/vk.svg' %}" alt="" width="100%"></div>
+                <div class="footer_social-whatsapp"><img src="{% static 'images/footer/whatsapp.svg' %}" alt="" width="80%"></div>
+                <div class="footer_social-telegram"><img src="{% static 'images/footer/telegram.svg' %}" alt="" width="80%"></div>
+            </div>
+        </div> -->
+    </div>
+</footer>
+
+
+{% endblock footer %}

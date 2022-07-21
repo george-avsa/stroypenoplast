@@ -1,0 +1,78 @@
+{% block content %}
+{% load static %}
+<div class="content">
+    <div class="content_navigator">
+        <div class="content_navigator-inner">
+            <p class="nav_item nav_margin-cart">КОРЗИНА</p>
+            <img src="{% static 'images/header/arrow_down.svg' %}" alt="">
+            <p class="nav_item nav_margin-cart nav_margin-active">ПОДТВЕРЖДЕНИЕ</p>
+            <img src="{% static 'images/header/arrow_down.svg' %}" alt="">
+            <p class="nav_item nav_margin-cart">ЗАВЕРШЕНИЕ</p>
+        </div>
+    </div>
+
+    <form action="" class="confirmation">
+        <div class="confirmation-form">
+            <p class="confiramtion-form_text">КОНТАКТНЫЕ ДАННЫЕ</p>
+            <input type="text" placeholder="Имя *" class="confirmation-input_text" name="name">
+            <input type="text" placeholder="Телефон *" class="confirmation-input_text" name="phone">
+            <input type="text" placeholder="Почта *" class="confirmation-input_text" name="email">
+            {% if del_type == 'delivery' %}
+            <p class="confiramtion-form_text confiramtion-form_text-margin">ДОСТАВКА</p>
+            <input type="text" placeholder="Адрес доставки *" class="confirmation-input_text" name="delivery">
+            {% else %}
+            <p class="confiramtion-form_text confiramtion-form_text-margin" id="self-delivery">САМОВЫВОЗ</p>
+            <div  class="confirmation-input_text confirmation-div_select">
+                <p>Мосстрой-31 Анино</p>
+                <!-- <img src="{% static 'images/header/arrow_down_purp.svg' %}" class="confirmation-image_arrow" alt=""> -->
+                <!-- <div class="confirmation-select_inner">
+                    Мосстрой-31 Анино
+                </div> -->
+            </div>
+            {% endif %}
+            <p class="confiramtion-form_text confiramtion-form_text-margin">ДЕТАЛИ</p>
+            <textarea class="confirmation-input_text confiramtion-textarea" style="resize: none" maxlength="150" placeholder="Комментарий"></textarea>
+        </div>
+        
+        <div class="confirmation-detail">
+            <p class="confiramtion-form_text">ВАШ ЗАКАЗ:</p>
+            <div class="confiramtion-detail_title">
+                <p class="confiramtion-form_text-light">ТОВАР</p>
+                <p class="confiramtion-form_text-light">ИТОГ</p>
+        </div>
+
+            <!-- cart_item -->
+            {% for cart_item in cart_items %}
+            <div class="confiramtion-detail_item">
+                <p class="confiramtion-form_text confiramtion-item_name confiramtion-leight">{{ cart_item.product_name }}</p>
+                <p class="confiramtion-form_text">x{{ cart_item.amount }}</p>
+                <p class="confiramtion-form_text confiramtion-leight">{{ cart_item.price }} р</p>
+            </div>
+            {% endfor %}
+
+        <div class="confiramtion-detail_title">
+            <p class="confiramtion-form_text-light">Итого</p>
+            <p class="confiramtion-form_text-light">{{ kek }} р</p>
+        </div>
+        <p class="confiramtion-form_text-light confiramtion-margin_top">ОПЛАТА</p>
+        <p class="cart-item_radio radio-no_margin">
+            <input type="radio" id="test2" name="radio-group">
+            <label for="test2" class="cart-item_text">Оплата при доставке</label>
+        </p>
+        <p class="confiramtion-text_extra_light">Оплата наличными при доставке заказа</p>
+        <p class="cart-item_radio">
+            <input type="radio" id="test3" name="radio-group">
+            <label for="test3" class="cart-item_text">Прямой банковский перевод</label>
+        </p>
+        <p class="confiramtion-text_extra_light">Оплату нужно направлять напрямую на наш банковский счет. Заказ будет отправлен после поступления средств на наш счет.</p>
+        <div class="cart-btn confiramtion-btn">
+            ПОДТВЕРДИТЬ ЗАКАЗ
+        </div>
+        <p class="confiramtion-text_extra_light text-no_margin">Ваши личные данные будут использоваться для обработки ваших заказов, упрощения вашей работы с сайтом и для других целей, описанных в нашей политика конфиденциальности.</p>
+        
+    </div>
+</div>
+
+{% csrf_token %}
+
+{% endblock %}

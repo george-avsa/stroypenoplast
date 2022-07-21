@@ -1,0 +1,95 @@
+{% block content %}
+{% load static %}
+<div class="content">
+    <div class="content_navigator">
+        <div class="content_navigator-inner">
+            <p class="nav_item nav_margin-cart nav_margin-active">КОРЗИНА</p>
+            <img src="{% static 'images/header/arrow_down.svg' %}" alt="">
+            <p class="nav_item nav_margin-cart">ПОДТВЕРЖДЕНИЕ</p>
+            <img src="{% static 'images/header/arrow_down.svg' %}" alt="">
+            <p class="nav_item nav_margin-cart">ЗАВЕРШЕНИЕ</p>
+        </div>
+    </div>
+    
+    <div class="cart" style="{% if cart_empty %}display: none{% endif %}">
+
+
+        <div class="cart-body">
+            <div class="cart-title">
+                <div class="cart-title_name"><p class="cart-title_text">ТОВАР</p></div>
+                <div class="cart-title_20 cart-title_price"><p class="cart-title_text">ЦЕНА</p></div>
+                <div class="cart-title_20"><p class="cart-title_text">КОЛИЧЕСТВО</p></div>
+                <div class="cart-title_20 cart-title_end"><p class="cart-title_text">ИТОГ</p></div>
+            </div>
+
+            <!-- cart-item -->
+            {% for cart_item in cart_items %}
+            <div class="cart-item">
+                <div class="cart-title_name cart-item_name">
+                    <img src="{% static 'images/cart/error.svg' %}" class="cart-title_delete" alt="" id="delete_item{{cart_item.id}}">
+                    <img src="{% static cart_item.image %}" alt="" class="cart-item_product-image">
+                    <p class="cart-item_text">{{ cart_item.product_name }}</p>
+                </div>
+                
+                <div class="cart-title_20 cart-item_center cart-title_price">
+                    <p class="cart-item_text product_price" id="price{{cart_item.id}}">{{cart_item.price}} ₽</p>
+                </div>
+
+                <div class="cart-title_20">
+                    <div class="shop_body-item_amount">
+                        <div class="item_minus" id="shop_item-minus{{cart_item.id}}"></div>
+                        <img src="/static/images/shop/minus.svg">
+                        <p class="shop_body-item_amount-amount item_amount" id="shop_item-count{{cart_item.id}}">{{ cart_item.amount }}</p>
+                        <img src="/static/images/shop/plus.svg" alt="">
+                        <div class="item_plus" id="shop_item-plus{{cart_item.id}}"></div>
+                    </div>
+                </div>
+                <div class="cart-title_20 cart-title_end"> <p class="cart-item_text total_product_price total_for_one_product" id="cart_product_total{{cart_item.id}}">0</p></div>
+            </div>
+            {% endfor %}
+
+            <div class="cart-total">
+                <p class="cart-title_text cart-total_text" style="padding: 0">ИТОГО:</p>
+                <p class="cart-item_text cart_total" id="cart_total"></p>
+            </div>
+
+            <div class="cart-btns">
+                <a href="/shop/penopolistirol"><div class="cart-btn">ПРОДОЛЖИТЬ ПОКУПКИ</div></a>
+                <a href="/static/pdf/delivery-plans.pdf" target="_blank"><div class="cart-btn cart-btn_left">ТАРИФЫ ДОСТАВКИ</div></a>
+            </div>
+                
+
+        </div>
+        <div class="cart-delivery">
+            <div class="cart-title cart-title_bottom">
+                <p class="cart-title_text">УСЛОВИЯ ДОСТАВКИ</p>
+            </div>
+            <div class="cart-delivery_props">
+                <p class="cart-item_text">Доставка</p>
+                <p class="cart-item_radio">
+                    <input type="radio" id="test2" name="radio-group">
+                    <label for="test2" class="cart-item_text">Доставка по ардесу клиента</label>
+                </p>
+                <p class="cart-item_radio">
+                    <input type="radio" id="test3" name="radio-group">
+                    <label for="test3" class="cart-item_text">Самовывоз</label>
+                </p>
+                <p class="cart-delivery_annotation">
+                    * Варианты доставки будут обновлены при оформлении заказа. 
+                </p>
+                <hr class="cart-delivery_hr">
+                <p class="cart-delivery_annotation cart_error"></p>
+                <div class="cart-delivery_btn">ОФОРМИТЬ ЗАКАЗ</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-empty" style="{% if not cart_empty %}display: none{% endif %}">
+        <a href="/shop/penopolistirol"><div class="cart-btn" style="width: 270px;">ВЕРНУТЬСЯ В МАГАЗИН</div></a>
+        <p class="cart-empty_text">КОРЗИНА ПУСТА :(</p>
+        <img src="{% static 'images/cart/empty_cart.png' %}" class="cart-empty_image" alt="">
+    </div>
+</div>
+
+{% csrf_token %}
+{% endblock %}

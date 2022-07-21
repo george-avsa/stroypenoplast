@@ -1,0 +1,163 @@
+footer {
+    width: 100%;
+    height: 320px;
+    background-color: #8D4953;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.footer_content {
+    @extend %width;
+    @extend %flex-between-end;
+    box-sizing: border-box;
+    padding-top: 35px;
+    padding-bottom: 80px;
+    @media only screen and (max-width : 899px) and (orientation : portrait) {
+        display: block;
+    }
+}
+
+.footer_left {
+    display: flex;
+}
+
+
+.footer_phone {
+    @extend %number_footer_head;
+    margin-top: 12px;
+}
+
+.footer_item {
+    @extend %font14;
+    margin-top: 4px;
+    color: #fff;
+    @media only screen and (max-device-width : 899px) and (orientation : landscape) {
+        font-size: 0.75em;
+    }
+    
+    // Smartphones (portrait)
+    @media only screen and (max-width : 899px) and (orientation : portrait) {
+     font-size: 0.75em;
+    }
+    
+    // iPads (landscape) 
+    @media only screen and (min-device-width : 900px) and (max-device-width : 1090px) and (orientation : landscape) {
+        font-size: 0.75em;
+    }
+    
+    // iPads (portrait)
+    @media only screen  and (min-device-width : 768px) and (max-device-width : 1090px) and (orientation : portrait) {
+        font-size: 0.75em;
+    }
+    
+    // Laptop
+    @media only screen  and (min-device-width : 1090px) and (max-device-width : 1700px) {
+    font-size: 0.75em;
+}
+}
+.mobile-hide {
+
+    @media only screen and (max-device-width : 899px) and (orientation : landscape) {
+        display: none;
+    }
+    
+    @media only screen and (max-width : 899px) and (orientation : portrait) {
+        display: none;
+    }
+    
+    // iPads (landscape) 
+    @media only screen and (min-device-width : 900px) and (max-device-width : 1024px) and (orientation : landscape) {
+        display: none;
+    }
+    
+    // iPads (portrait)
+    @media only screen  and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+        display: none;
+  }
+}
+
+.mobile-portait-hide {
+    @media only screen and (max-width : 899px) and (orientation : portrait) {
+        display: none;
+    }
+}
+
+.footer_item-small {
+    margin-top: 16px;
+    @extend %font12;
+    color: #fff;
+}
+
+.footer_menu {
+    margin-left: 85px;
+}
+
+.footer_title {
+    @extend %font16;
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.footer_text {
+    @extend %font14;
+    margin-top: 5px;
+    color: #fff;
+    max-width: 240px; 
+
+    @media only screen and (max-device-width : 899px) and (orientation : landscape) {
+        font-size: 0.75em;
+    }
+    
+    // Smartphones (portrait)
+    @media only screen and (max-width : 899px) and (orientation : portrait) {
+        font-size: 0.75em;
+        }
+        
+        // iPads (landscape) 
+        @media only screen and (min-device-width : 900px) and (max-device-width : 1024px) and (orientation : landscape) {
+            font-size: 0.75em;
+        }
+        
+        // iPads (portrait)
+        @media only screen  and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
+            font-size: 0.75em;
+      }
+      
+      // Laptop
+      @media only screen  and (min-device-width : 1025px) and (max-device-width : 1700px) {
+        font-size: 0.75em;
+}
+}
+.footer_right {
+    @extend %flex-end-end;
+    @media only screen and (max-width : 899px) and (orientation : portrait) {
+        margin-top: 20px;
+    }
+}
+
+.footer_social {
+    display: flex;
+
+    div {
+        @extend %flex-center-center;
+        height: 38px;
+        width: 38px;
+        margin-left: 20px;
+        cursor: pointer;
+
+        @media only screen and (max-width : 899px) and (orientation : portrait) {
+            width: 30px;
+            height: 30px;
+        }
+
+    }
+}
+
+.footer_logo {
+    @media only screen and (max-width : 899px) and (orientation : portrait) {
+        width: 150px;
+    }
+}
