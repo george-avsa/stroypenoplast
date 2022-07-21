@@ -13,7 +13,7 @@ import datetime
 def cart(request):
     template = loader.get_template('cart.html')
     context, cart_name = mobile_cart(request)
-    context.update({'page': 'cart', 'kek': [1, 1, 1, 1]})
+    context.update({'page': 'cart', 'kek': [1, 1, 1, 1], 'page_name': 'Корзина'})
     rendered_template =  HttpResponse(template.render(context, request))
     rendered_template.set_cookie('cart_info', cart_name)
     return rendered_template
@@ -25,7 +25,7 @@ def confirmation(request, del_type):
         total = 0
         for cart_item in context['cart_items']:
             total += int(cart_item['amount']) * int(cart_item['price'])
-        context.update({'page': 'cart', 'kek': total, 'del_type': del_type})
+        context.update({'page': 'cart', 'kek': total, 'del_type': del_type, 'page_name': 'Подтверждение'})
         rendered_template =  HttpResponse(template.render(context, request))
         rendered_template.set_cookie('cart_info', cart_name)
         return rendered_template
@@ -79,5 +79,5 @@ def create_application(request):
 
 def ready(request):
     template = loader.get_template('ready.html')
-    rendered_template =  HttpResponse(template.render({'page': 'cart'}, request))
+    rendered_template =  HttpResponse(template.render({'page': 'cart', 'page_name': 'Завершение'}, request))
     return rendered_template

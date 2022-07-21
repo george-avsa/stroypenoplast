@@ -49,7 +49,7 @@ async function setRequest(method, url, csrftoken, params = null){
         }).then(response => {
             return response.json()
         }).then(data => {
-            alert(JSON.stringify(data))
+            location.href = '/'
         })
     }
 }

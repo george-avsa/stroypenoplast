@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from random import randint
 
 from django.template import loader
@@ -12,6 +12,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
+from .models import FormText
 
 
 # def generate_id():
@@ -52,18 +53,7 @@ def send_form(request):
         data = {
             'my_data': json.loads(data_from_post)
         }
-        message = 'Имя: ' + data['my_data']['name'] + '; Телефон: ' + data['my_data']['phone']  + '; Почта: ' + '; Связаться: ' + data['my_data']['connectType']
-        print(message)
-        
-        to_email = 'goga-tilda@yandex.ru'
-        from_email = 'george.avsa@yandex.ru'
-
-        msg = MIMEMultipart()
-        msg.attach(MIMEText(message, 'plain'))        
-
-        server = smtplib.SMTP('smtp.yandex.ru:465')
-        server.starttls()
-        server.login(from_email, 'Alp222ot12yandex')
-        server.sendmail(from_email, to_email, msg)
-        server.quit()
-        return JsonResponse(data['my_data'])
+        text = data['my_data']['name'] + '; ' + data['my_data']['phone'] + '; ' + data['my_data']['connectType']
+        message = FormText(text = text)
+        message.save()
+        return JsonResponse(data)
