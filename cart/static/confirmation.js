@@ -61,6 +61,7 @@ function checkFields() {
         } else {
             // values.push({name: fieldValue})
             values[name] = fieldValue
+            console.log(values[name])
         }
     }
     if (flag) {
@@ -93,6 +94,9 @@ const confirmBtn = document.querySelector('.confiramtion-btn')
 confirmBtn.addEventListener('click', function(){
     radioValue = checkRadio()
     feildsValues = checkFields()
+    if (!feildsValues.delivery) {
+        feildsValues.delivery = 'self-delivery'
+    } 
     if (feildsValues && radioValue) {
         let csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         setRequestSend('POST', '/cart/application', csrftoken, params = {'radioValue': radioValue.getAttribute('id'), 'feildsValues': feildsValues})

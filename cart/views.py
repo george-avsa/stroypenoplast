@@ -1,5 +1,4 @@
 from email.mime import application
-from black import mypyc_attr
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpResponse
