@@ -133,9 +133,7 @@
             <img src="{% static 'images/content/ms31_logo.svg' %}" class="content_company-ms31" alt="">
             <div>
                 <p class="content_slider-title">О компании</p>
-                <p class="content_company-text">Наша компания является партнером компании <b>«Мосстрой 31»</b>, ведущего российского поставщика полистиролбетонных блоков и пенопласта в Москве и области. Продукция, которую мы реализуем, изготавливается на оборудовании высокого качества и имеет все нужные сертификаты.
-                    Мы предлагаем качественные товары: полиэтиленовую пленку, полистиролбетонные блоки, пенопласт и изоляционные стеновые материалы различных видов.
-                    Сотрудничая с нашим компанией Вы получаете надежную и качественную продукцию по оптовой цене даже дешевле, чем у производителя</p>
+                <p class="content_company-text">Наша компания является партнером <b>"Мосстрой-31"</b>, одного из крупнейших поставщиков теплоизоляционных и декоративных материалов по Москве и МО. Вся продукция соответсвует ГОСТам и изготавливается на оборудовании высочайшего класса. Помимо качественной продукции мы берем всю логистику на себя, доставка возможна в пределах до 350км от МКАД в любых объемах.</p>
                 </div>
             </div>
             <div class="content_company-block2">
@@ -165,8 +163,8 @@
                 <input type="text" placeholder="Ваше имя" class="form_input input_required" id="form_name">
                 <input type="text" placeholder="Ваша почта" class="form_input"  id="form_email">
                 <input type="text" placeholder="Ваш номер телефона" class="form_input input_required" id="form_phone">
-                <div class="form_input div_input" id="select_div">
-                    <p id="select_placeholder">Выберите способ связи</p>
+                <div class="form_input div_input" id="select_div" style="opacity: 0; height: 0px;">
+                    <p id="select_placeholder">Позвонить</p>
                     <img src="{% static 'images/content/arrow_right.svg' %}" alt="" class="form_input-arrow">
                     <ul class="form_input-select">
                         <li onclick="chooseSelect('call')" class="select_options">Позвонить</li>
@@ -184,27 +182,27 @@
             <div class="content_advantages">
                 <p class="form_title">Наши преимущеста</p>
                     <div class="content_advantages-item">
-                        <div class="content_advantages-img" style="background-image: url({% static 'images/content/advantages/handshake.svg' %});"></div>
-                        <p class="content_advantages-text">Работаем честно</p>
+                        <div class="content_advantages-img" style="background-image: url({% static 'images/content/advantages/bill.svg' %}); background-size: 100%"></div>
+                        <p class="content_advantages-text">Чистая покупка</p>
                     </div>
                 <div class="content_advantages-item">
-                    <div class="content_advantages-img" style="background-image: url({% static 'images/content/advantages/wallet.svg' %}); background-size: 60%"></div>
-                    <p class="content_advantages-text">Доступные цены</p>
+                    <div class="content_advantages-img" style="background-image: url({% static 'images/content/advantages/cheap.svg' %}); background-size: 90%"></div>
+                    <p class="content_advantages-text">Дешевле чем у производителя</p>
                 </div>
                 <div class="content_advantages-item">
-                    <div class="content_advantages-img" style="background-image: url({% static 'images/content/advantages/truck.svg' %}); background-size: 70%;"></div>
+                    <div class="content_advantages-img" style="background-image: url({% static 'images/content/advantages/fast.svg' %}); background-size: 90%;"></div>
                     <p class="content_advantages-text">Оперативная доставка</p>
                 </div>
                 <div class="content_advantages-item">
-                    <div class="content_advantages-img"  style="background-image: url({% static 'images/content/advantages/factory.svg' %}); background-size: 70%;"></div>
-                    <p class="content_advantages-text">От производителя</p>
+                    <div class="content_advantages-img"  style="background-image: url({% static 'images/content/advantages/location.svg' %}); background-size: 100%;"></div>
+                    <p class="content_advantages-text">Дальние расстояния</p>
                 </div>
                 <div class="content_advantages-item">
-                    <div class="content_advantages-img" style="background-image: url({% static 'images/content/advantages/certificate.svg' %}); background-size: 60%;"></div>
-                    <p class="content_advantages-text">Гарантия качества</p>
+                    <div class="content_advantages-img" style="background-image: url({% static 'images/content/advantages/standard.svg' %}); background-size: 100%;"></div>
+                    <p class="content_advantages-text">Соответсвует стандартам</p>
                 </div>
                 <div class="content_advantages-item">
-                    <div class="content_advantages-img" style="background-image: url({% static 'images/content/advantages/volume.svg' %}); background-size: 60%;"></div>
+                    <div class="content_advantages-img" style="background-image: url({% static 'images/content/advantages/truck.svg' %}); background-size: 100%;"></div>
                     <p class="content_advantages-text">Любые объемы</p>
                 </div>
                 <!-- <div class="content_advantages-item adv_margin-left advantages_mobile">
@@ -243,8 +241,8 @@
                 <div>
                     <h1 class="content_contacts-body_title">Наши контакты</h1>
                     <p class="content_contacts-body_text">
-                        г. Москва, Ленинский проспект, 113/1, <br>
-                        телефоны: <a href="tel:+79688258282" style="color: #fff; opacity: .8; text-decoration: underline;">+7(968)825-82-82</a>, <a href="tel:+79773263306" style="color: #fff; opacity: .8;text-decoration: underline;">+7(977)326-33-06</a> <br>
+                        г. Москва, Островитянова, 53, <br>
+                        телефоны: <a href="tel:+79773263306" style="color: #fff; opacity: .8; text-decoration: underline;">+7(977)326-33-06</a> <br>
                         Режим работы: ежедневно с 08:00 до 21:00 <br>
                         <a href="mailto:info@stroy-penoplast.ru" style="color: #fff; opacity: .8; text-decoration: underline;"> info@stroy-penoplast.ru</a></p>
                 </div>

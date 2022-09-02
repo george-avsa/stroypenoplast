@@ -3,7 +3,7 @@ from django.contrib import admin
 from .models import Products, ProductTypes, ApplicationName, ProductMenus
 
 class ProductsAdmin(admin.ModelAdmin):
-    list_display = ('product_name', 'price', 'product_type', 'application', 'image')
+    list_display = ('product_name', 'price', 'product_type', 'application', 'image', 'unit', 'character1', 'character2', 'character3', 'character4', 'description')
 
 class ProductTypesAdmin(admin.ModelAdmin):
     list_display = ('id', 'product_type_name')

@@ -1,0 +1,42 @@
+{% block modal %}
+{% load static %}
+    <div class="shop_modal-wrapper">
+        <div class="shop_modal">
+            <div class="shop_modal-top">
+                <img src="" id="modal_image" class="modal_image" alt="">
+                <div class="shop_modal-top-info">
+                    <h1 class="shop_modal-name" id="modal_name">
+
+                    </h1>
+                    <div class="shop_modal-option">
+                        <h2 class="shop_modal-option_name" id="modal_unit"></h2>
+                        <h2 class="shop_modal-option_value" id="modal_price"></h2>
+                    </div>
+                    <div class="shop_modal-option">
+                        <h2 class="shop_modal-option_name">Производитель</h2>
+                        <h2 class="shop_modal-option_value">Мосстрой-31</h2>
+                    </div>
+                    <div class="shop_modal-option" id="character1Block">
+                        <h2 class="shop_modal-option_name" id="character1"></h2>
+                        <h2 class="shop_modal-option_value" id="character1Value"></h2>
+                    </div>
+                    <div class="shop_modal-option" id="character2Block">
+                        <h2 class="shop_modal-option_name" id="character2"></h2>
+                        <h2 class="shop_modal-option_value" id="character2Value"></h2>
+                    </div>
+                    <div class="shop_modal-option" id="character3Block">
+                        <h2 class="shop_modal-option_name" id="character3"></h2>
+                        <h2 class="shop_modal-option_value" id="character3Value"></h2>
+                    </div>
+                </div>
+            </div>
+            <img class="shop_modal-close" src="{% static 'images/shop/close.svg' %}"></img>
+        </div>
+        <div class="modal_preloader">
+            <div class="modal_preloader-inner">
+                
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

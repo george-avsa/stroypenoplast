@@ -19,7 +19,7 @@
     <div class="shop_body">
         {% for product in kek %}
 
-        <div class="shop_body-item">
+        <div class="shop_body-item" data-name="{{product.product_name}}" style="cursor: pointer;">
             <div class="shop_body-item_img" style="background-image: url({% static product.image %})"></div>
             <div class="shop_body-item_content">
                 <h1 class="shop_body-item_name">{{product.product_name}}</h1>
@@ -48,15 +48,23 @@
         {% include 'products/penopolistirol.html' %}
         {% block penopolistirol %}
         {% endblock %}
+        
     {% elif product_type == 'НЕСЪЕМНАЯ ОПАЛУБКА' %}
 
     {% elif product_type == 'ГРАНУЛЫ ПЕНОПОЛИСТИРОЛА' %}
 
     {% elif product_type == 'ПОЛИТЕРМ' %}
-
+    
     {% elif product_type == 'ПОДЛОЖКА ДЛЯ ПОЛА' %}
-
+    
     {%endif%}
+
+    {% if product_type != 'ГРАНУЛЫ ПЕНОПОЛИСТИРОЛА' %}
+        {% include 'modal.html' %}
+        {% block modal %}
+        {% endblock %}  
+
+    {% endif %}
 
 </div>
 <!-- <div class="shop_push">

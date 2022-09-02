@@ -9,7 +9,7 @@ function collectInfo() {
         'name': name.value,
         'phone': phone.value,
         'email': email.value,
-        'connectType': connectType.innerHTML
+        'connectType': 'Позвонить'
     }
 }
 

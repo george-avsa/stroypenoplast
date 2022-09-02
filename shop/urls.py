@@ -26,5 +26,27 @@ urlpatterns = [
     
     path('decor', views.fasad, name='shop'),
     
+    path('decor/cornice', views.fasad_cornice, name='fasad_cornice'),
+    
+    path('decor/platbands', views.fasad_platbands, name='fasad_platbands'),
+    
+    path('decor/stone', views.fasad_stones, name='fasad_stones'),
+    
+    path('decor/slope', views.fasad_slope, name='fasad_slope'),
+    
+    path('decor/corner', views.fasad_corner, name='fasad_corner'),
+    
+    path('decor/cap', views.fasad_cap, name='fasad_cap'),
+    
+    path('decor/pommel', views.fasad_pommel, name='fasad_pommel'),
+    
+    path('decor/tympanums', views.fasad_tympanums, name='fasad_tympanums'),
+    
+    path('decor/column', views.fasad_column, name='fasad_column'),
+    
+    path('decor/pilasters', views.fasad_pilasters, name='fasad_pilasters'),
+
     path('add/', views.shop_add, name='add'),
+
+    path('getextra/<str:product_name>', views.getProductInfo, name='getextra'),
 ]

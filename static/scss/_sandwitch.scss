@@ -85,7 +85,25 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    padding: 30px 0;
+    padding: 0px 0px 30px 0px;
+}
+
+.content_slider-title {
+    @extend %title;
+    font-size: 24px;
+    color: #65343C;
+    margin-bottom: 20px;
+}
+
+.content_company-text {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 22px;
+    color: #65343C;
+    line-height: 150%;
+    @media only screen and (max-width : 767px) and (orientation : portrait) {
+        font-size: 16px;
+    }
 }
 
 .content_sandwitch-fasad_item {
@@ -100,6 +118,8 @@
     align-items: center;
     box-sizing: border-box;
     padding: 20px;
+    transition: .2s;
+    cursor: pointer;
 
     @media only screen and (max-device-width : 899px) and (orientation : landscape) {
         width: 30%;
@@ -115,6 +135,11 @@
     }
 
 }
+
+.content_sandwitch-fasad_item:hover {
+    transform: scale(105%);
+}
+
 .content_slider-text {
     font-style: normal;
     font-weight: 600;

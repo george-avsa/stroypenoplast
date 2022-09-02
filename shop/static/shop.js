@@ -69,7 +69,7 @@ function addCart(name, amount, price) {
 
 } 
 
-async function setRequest(method, url, csrftoken, params = null){
+async function setRequest(method, url, csrftoken='', params = null){
     if (method == 'POST') {
         return fetch(url, {
             method: method,
@@ -86,6 +86,68 @@ async function setRequest(method, url, csrftoken, params = null){
             setCookie('cart_info', data['my_data']['cart_info'], 7);
             addCart(data['my_data']['name'], data['my_data']['amount'], data['my_data']['price'])
         })
+    } else {
+        return fetch(url)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            // alert(data.character3[1])
+            // alert(data.name);
+            const modalName = document.getElementById('modal_name')
+            modalName.innerHTML = data.name
+            const modalImage = document.getElementById('modal_image')
+            modalImage.setAttribute('src', data.image)
+            const modalUnit = document.getElementById('modal_unit')
+            modalUnit.innerHTML = 'Цена за ' + data.unit
+            const modalPrice = document.getElementById('modal_price')
+            modalPrice.innerHTML = data.price + ' руб.'
+            const character1 = document.getElementById('character1')
+            const character1Value = document.getElementById('character1Value')
+            const character1Block = document.getElementById('character1Block')
+            if (data.character1[0]) {
+                character1Block.style.display = 'flex'
+                character1.innerHTML = data.character1[0]
+                character1Value.innerHTML = data.character1[1]
+            } else {
+                character1Block.style.display = 'none'
+            }
+            const character2 = document.getElementById('character2')
+            const character2Value = document.getElementById('character2Value')
+            const character2Block = document.getElementById('character2Block')
+            let decor = false
+            if (data.character2[0]) {
+                if (data.character2[0].includes('Тип')) {
+                    decor = true
+                } 
+
+                character2Block.style.display = 'flex'
+                character2.innerHTML = data.character2[0]
+                character2Value.innerHTML = data.character2[1]
+
+            } else {
+                character2Block.style.display = 'none'
+            }
+            const character3 = document.getElementById('character3')
+            const character3Value = document.getElementById('character3Value')
+            const character3Block = document.getElementById('character3Block')
+            if (data.character3[0]) {
+                if (decor) {
+                    modalImage.setAttribute('src', data.character3[1])
+                    // modalImage.setAttribute('src', '/static/images/psb-s.png')
+                } else {
+                    character3Block.style.display = 'flex'
+                    character3.innerHTML = data.character3[0]
+                    character3Value.innerHTML = data.character3[1]
+                }
+            } else {
+                character3Block.style.display = 'none'
+            }
+            const preloader = document.querySelector('.modal_preloader')
+            preloader.style.display = 'none'
+            const modalBody = document.querySelector('.shop_modal')
+            modalBody.style.display = 'block'
+        });
     }
 }
 
@@ -120,3 +182,35 @@ window.addEventListener('resize', function() {
     menuBarWidth = windowInnerWidth * 0.9;
     newMenuBarWidth(menuBarContent, menuBarWidth);
 }, false);
+
+const shopItems = document.querySelectorAll('.shop_body-item')
+
+const modalShop = document.querySelector('.shop_modal-wrapper')
+if (shopItems.length != 0) {
+    for (let shopItem of shopItems) {
+        shopItem.addEventListener('click', (e) => {
+            if (e.target.getAttribute('class') != 'shop_body-item_tocart') {
+                modalShop.style.display = 'flex'
+                modalShop.classList.add('entering')
+                setTimeout(() => {
+                    modalShop.style.opacity = '1'
+                }, 200)
+            }
+            setRequest('GET', '/shop/getextra/' + shopItem.getAttribute('data-name'))
+            // alert(shopItem.getAttribute('data-name'))
+        })
+    }
+}
+
+modalShop.addEventListener('click', (e) =>  {
+    let eventClass = e.target.getAttribute('class')
+    if (eventClass.includes('shop_modal-wrapper') || eventClass == 'shop_modal-close') {
+        modalShop.classList.remove('entering')
+        modalShop.classList.add('exiting')
+        setTimeout(() => {
+            modalShop.classList.remove('exiting')
+            modalShop.style.display = 'none'
+            modalShop.style.opacity = '0'
+        }, 200)
+    }
+})

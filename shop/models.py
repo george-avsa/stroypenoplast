@@ -17,10 +17,11 @@ class Products(models.Model):
     product_name = models.CharField(max_length=200)
     image = models.CharField(max_length=200, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    length = models.CharField(max_length=200, blank=True)
-    width = models.CharField(max_length=200, blank=True)
-    height = models.CharField(max_length=200, blank=True)
-    density = models.CharField(max_length=200, blank=True)
+    unit = models.CharField(max_length=200, blank=True)
+    character1 = models.CharField(max_length=200, blank=True)
+    character2 = models.CharField(max_length=200, blank=True)
+    character3 = models.CharField(max_length=200, blank=True)
+    character4 = models.CharField(max_length=200, blank=True)
     description = models.TextField(blank=True)
     def __str__(self) -> str:
         return f"{self.product_name}, {self.product_type}, {self.application}"

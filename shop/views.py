@@ -131,21 +131,52 @@ def sandwitch_panels(request):
 
 
 # фасад
+def fasad_cornice(request):
+    return shop_view_application(request, 6, 15, 'Карнизы', 'ФАСАДНЫЙ ДЕКОР')
+
+def fasad_platbands(request):
+    return shop_view_application(request, 6, 16, 'Наличники', 'ФАСАДНЫЙ ДЕКОР')
+
+def fasad_stones(request):
+    return shop_view_application(request, 6, 17, 'Камень замковый', 'ФАСАДНЫЙ ДЕКОР')
+
+def fasad_slope(request):
+    return shop_view_application(request, 6, 18, 'Откосы', 'ФАСАДНЫЙ ДЕКОР')
+
+
+def fasad_corner(request):
+    return shop_view_application(request, 6, 19, 'Русты', 'ФАСАДНЫЙ ДЕКОР')
+
+def fasad_cap(request):
+    return shop_view_application(request, 6, 20, 'Крышки', 'ФАСАДНЫЙ ДЕКОР')
+
+def fasad_pommel(request):
+    return shop_view_application(request, 6, 21, 'Навершие', 'ФАСАДНЫЙ ДЕКОР')
+
+def fasad_tympanums(request):
+    return shop_view_application(request, 6, 22, 'Тимпаны', 'ФАСАДНЫЙ ДЕКОР')
+
+def fasad_column(request):
+    return shop_view_application(request, 6, 23, 'Колонны', 'ФАСАДНЫЙ ДЕКОР')
+
+def fasad_pilasters(request):
+    return shop_view_application(request, 6, 24, 'Пилястры', 'ФАСАДНЫЙ ДЕКОР')
+
 def fasad(request):
     # установка мини-корзины
     template = loader.get_template('fasad.html')
     context, cart_name = mobile_cart(request)
     context.update({'decor': [
-        {'name': 'Карнизы', 'image': 'images/shop/fasad/carnis.png'},
-        {'name': 'Балясины', 'image': 'images/shop/fasad/nalichniki.png'},
-        {'name': 'Камень замковый', 'image': 'images/shop/fasad/stone.png'},
-        {'name': 'Колонны', 'image': 'images/shop/fasad/colonna.png'},
-        {'name': 'Крышка на столб', 'image': 'images/shop/fasad/roof.png'},
-        {'name': 'Навершие', 'image': 'images/shop/fasad/navershia.png'},
-        {'name': 'Откосы', 'image': 'images/shop/fasad/otkosi.png'},
-        {'name': 'Пилястры', 'image': 'images/shop/fasad/pilastri.png'},
-        {'name': 'Русты', 'image': 'images/shop/fasad/rusti.png'},
-        {'name': 'Типманы', 'image': 'images/shop/fasad/timpani.png'},
+        {'name': 'Карнизы', 'image': 'images/shop/fasad/carnis.png', 'link': '/shop/decor/cornice'},
+        {'name': 'Наличники', 'image': 'images/shop/fasad/nalichniki.png', 'link': '/shop/decor/platbands'},
+        {'name': 'Камень замковый', 'image': 'images/shop/fasad/stone.png', 'link': '/shop/decor/stone'},
+        {'name': 'Колонны', 'image': 'images/shop/fasad/colonna.png', 'link': '/shop/decor/column'},
+        {'name': 'Крышка на столб', 'image': 'images/shop/fasad/roof.png', 'link': '/shop/decor/cap'},
+        {'name': 'Навершие', 'image': 'images/shop/fasad/navershia.png', 'link': '/shop/decor/pommel'},
+        {'name': 'Откосы', 'image': 'images/shop/fasad/otkosi.png', 'link': '/shop/decor/slope'},
+        {'name': 'Пилястры', 'image': 'images/shop/fasad/pilastri.png', 'link': '/shop/decor/pilasters'},
+        {'name': 'Русты', 'image': 'images/shop/fasad/rusti.png', 'link': '/shop/decor/corner'},
+        {'name': 'Типманы', 'image': 'images/shop/fasad/timpani.png', 'link': '/shop/decor/tympanums'},
     ]})
     rendered_template =  HttpResponse(template.render(context, request))
     rendered_template.set_cookie('cart_info', cart_name)
@@ -192,3 +223,36 @@ def shop_add(request):
         data['my_data']['str_price'] = price_str
         data['my_data']['cart_info'] = user_cart_id
         return JsonResponse(data)
+
+
+def getProductInfo(request, product_name):
+    if request.method == 'GET':
+        product = get_object_or_404(Products, product_name = product_name)
+        if ('-' in product.character1):
+            character1 = product.character1.split('-')
+        else:
+            character1 = [False, False]
+        if ('-' in product.character2):
+            character2 = product.character2.split('-')
+        else:
+            character2 = [False, False]
+        if ('-' in product.character3):
+            character3 = product.character3.split('-')
+        else:
+            character3 = [False, False]
+        if ('-' in product.character4):
+            character4 = product.character4.split('-')
+        else:
+            character4 = [False, False]
+
+        result = {
+            'name': product.product_name,
+            'unit': product.unit,
+            'price': product.price,
+            'image': '/static/images/'+product.image.split('/')[-1],
+            'character1': [character1[0], character1[1]],
+            'character2': [character2[0], character2[1]],
+            'character3': [character3[0], character3[1]],
+        }
+        print(result['image'])
+        return JsonResponse(result)
